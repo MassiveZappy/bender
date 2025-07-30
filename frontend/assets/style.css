@@ -1,0 +1,646 @@
+/* Bender - Satirical News Site CSS */
+
+/* === Base Styles === */
+:root {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #e74c3c;
+    --accent-color: #f39c12;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #888;
+    --font-main: "Helvetica Neue", Arial, sans-serif;
+    --border-radius: 4px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Allow full width for article editor page */
+.article-editor-page .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* === Typography === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    color: var(--primary-dark);
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* === Layout === */
+header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+main {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Full width main content for article editor */
+.article-editor-page main,
+.article-editor-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+}
+
+/* === Navigation === */
+nav {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+nav a:hover {
+    background-color: var(--primary-dark);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav .nav-link-danger {
+    background-color: var(--secondary-color);
+}
+
+nav .nav-link-danger:hover {
+    background-color: #c0392b;
+}
+
+nav .nav-link-admin {
+    background-color: var(--accent-color);
+}
+
+nav .nav-link-admin:hover {
+    background-color: #d35400;
+}
+
+/* Mobile menu */
+.mobile-menu-container {
+    display: none;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+    .mobile-menu-container {
+        display: block;
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 1.5rem;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 100;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background: white;
+        width: 200px;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 99;
+    }
+
+    nav.mobile-menu-open {
+        display: flex;
+    }
+
+    nav a {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* === Forms === */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
+/* Full width form for article editor */
+.article-editor-page form[method="POST"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px !important;
+    margin: 0 auto 20px auto !important;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* Styling for article editor inputs */
+.article-editor-page input:not([type="hidden"]),
+.article-editor-page select,
+.article-editor-page textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+    transform: translateY(-2px);
+}
+
+button,
+input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced form with animations */
+.enhanced-form input,
+.enhanced-form textarea,
+.enhanced-form select {
+    transform-origin: left;
+}
+
+.enhanced-form input:focus,
+.enhanced-form textarea:focus,
+.enhanced-form select:focus {
+    transform: translateY(-2px);
+}
+
+/* Error messages */
+p[style*="color:red"] {
+    background-color: rgba(231, 76, 60, 0.1);
+    padding: 10px;
+    border-left: 4px solid var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+/* === Lists === */
+ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+li {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+li a {
+    margin-right: 10px;
+}
+
+/* Enhanced article list */
+.article-list {
+    margin-top: 20px;
+}
+
+.article-list li {
+    padding: 15px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.article-title {
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.article-meta {
+    color: var(--dark-gray);
+    font-style: italic;
+    margin: 0 15px;
+    font-size: 0.9rem;
+}
+
+.article-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Icons in buttons */
+.icon {
+    margin-right: 5px;
+}
+
+/* === Buttons === */
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--primary-dark);
+    text-decoration: none;
+}
+
+.btn-danger {
+    background-color: var(--secondary-color);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+button[onclick*="delete"] {
+    background-color: var(--secondary-color);
+}
+
+button[onclick*="delete"]:hover {
+    background-color: #c0392b;
+}
+
+/* === Dashboard === */
+.article-list li {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-list li::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        to right,
+        var(--primary-color),
+        var(--accent-color)
+    );
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.article-list li:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.article-title {
+    flex-grow: 1;
+    font-weight: bold;
+    transition: color 0.2s ease;
+    text-align: center;
+}
+
+.article-title:hover {
+    color: var(--primary-color);
+}
+
+.article-meta {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+    margin: 0 15px;
+    font-style: italic;
+    text-align: center;
+}
+
+.article-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Article editor action buttons */
+.article-editor-page .article-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .article-actions {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* === Utility Classes === */
+.text-center {
+    text-align: center;
+}
+
+/* Article editor specific classes */
+.button-group-left {
+    display: flex;
+    gap: 10px;
+}
+
+.button-group-right {
+    display: flex;
+    gap: 10px;
+}
+
+.field-description {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.mt-1 {
+    margin-top: 0.5rem;
+}
+.mt-2 {
+    margin-top: 1rem;
+}
+.mt-3 {
+    margin-top: 1.5rem;
+}
+.mb-1 {
+    margin-bottom: 0.5rem;
+}
+.mb-2 {
+    margin-bottom: 1rem;
+}
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+/* Specific component styling */
+#welcome-message {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Homepage specific styles */
+.hero {
+    text-align: center;
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(
+        135deg,
+        rgba(52, 152, 219, 0.1) 0%,
+        rgba(243, 156, 18, 0.1) 100%
+    );
+    z-index: -1;
+    filter: blur(10px);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    border-bottom: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--dark-gray);
+}
+
+/* Animation for page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Ripple effect for buttons */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    background-color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,35 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database files
+*.sqlite
+*.db
+
+# Backup files and logs
+backups/
+*.log
+
+# Scripts to exclude
+hrefFixer.py
+update_skins.py
+frontend/skins/*.py
+
+# Skins - exclude all except modern themes
+frontend/skins/*
+!frontend/skins/modern_*.html
+!frontend/skins/modern_*.json
+
+# Certificates and sensitive files
+*.key
+*.crt
+*.pem
+
+# Deployment-specific files that should be generated on target
+bender-flask.service
+
+# Misc
+.DS_Store
+.env

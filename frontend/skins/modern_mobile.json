@@ -1,0 +1,7 @@
+{
+    "id": "modern_mobile",
+    "name": "Modern Mobile Skin",
+    "description": "A mobile-friendly responsive skin for smaller screens",
+    "template_path": "skins/modern_mobile.html",
+    "version": "1.0.0"
+}

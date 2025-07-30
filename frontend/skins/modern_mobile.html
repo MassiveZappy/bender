@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - Bender News</title>
+    <style>
+        :root {
+            --primary: #a6c1d6;
+            --primary-dark: #7ca4bd;
+            --primary-light: #c8deec;
+            --secondary: #fffbc7;
+            --text-color: #000d18;
+            --background: #ffffff;
+            --spacing: 1rem;
+            --font-main: 'Georgia', serif;
+            --font-secondary: 'Arial', sans-serif;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--background);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 var(--spacing);
+            margin: 0 auto;
+        }
+
+        .mobile-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: var(--spacing) 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .mobile-headline {
+            background-color: var(--primary-light);
+            padding: 1.5rem var(--spacing);
+            border-bottom: 3px solid var(--primary-dark);
+        }
+
+        .mobile-headline h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .mobile-headline h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .mobile-meta {
+            background-color: var(--primary-light);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+
+        .mobile-meta-item {
+            margin-bottom: 0.5rem;
+            font-family: var(--font-secondary);
+        }
+
+        .mobile-author {
+            font-weight: bold;
+        }
+
+        .mobile-author-description {
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .mobile-publication-date {
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        .mobile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .mobile-tag {
+            display: inline-block;
+            background-color: var(--primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: var(--font-secondary);
+        }
+
+        .mobile-primary-tag {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .mobile-content {
+            padding: 0 var(--spacing);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .mobile-content p {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-related {
+            background-color: var(--secondary);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .mobile-related h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .mobile-related-story {
+            padding: 0.75rem 0;
+            border-bottom: 1px dotted var(--primary-light);
+        }
+
+        .mobile-related-title {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .mobile-footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 1.5rem var(--spacing);
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .mobile-footer-text {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .mobile-article-markdown img {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .mobile-article-markdown ol,
+        .mobile-article-markdown ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 0;
+        }
+
+        .mobile-article-markdown li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-article-markdown blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        .mobile-back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-dark);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="container">
+            <div class="mobile-logo">BENDER</div>
+        </div>
+    </header>
+
+    <section class="mobile-headline">
+        <div class="container">
+            <h1>{{title}}</h1>
+            <h2>{{subtitle}}</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="mobile-meta">
+            <div class="mobile-meta-item mobile-author">By {{author}}</div>
+            <div class="mobile-meta-item mobile-author-description">{{author_description}}</div>
+            <div class="mobile-meta-item mobile-publication-date">Published: {{publication_datetime}}</div>
+            <div class="mobile-meta-item mobile-tags">
+                <span class="mobile-tag mobile-primary-tag">{{primary_tag}}</span>
+                {{tags}}
+            </div>
+        </div>
+
+        <div class="mobile-content mobile-article-markdown">
+            {{content}}
+        </div>
+
+        <div class="mobile-related">
+            <h3>Related Stories</h3>
+            <div class="mobile-related-story">
+                <div class="mobile-related-title">Another Satirical Headline That's Funny</div>
+            </div>
+            <div class="mobile-related-story">
+                <div class="mobile-related-title">Local Man Discovers Humor, Shares It With Friends</div>
+            </div>
+            <div class="mobile-related-story">
+                <div class="mobile-related-title">Scientists Confirm: Laughter Is Indeed The Best Medicine</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mobile-footer">
+        <div class="container">
+            <div>BENDER NEWS</div>
+            <div class="mobile-footer-text">The content on this page is satirical and meant for entertainment purposes only.</div>
+        </div>
+    </footer>
+
+    <a href="#" class="mobile-back-to-top">↑</a>
+
+    <script>
+        // Show/hide back-to-top button based on scroll position
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.mobile-back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Initially hide the back-to-top button
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTop = document.querySelector('.mobile-back-to-top');
+            backToTop.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

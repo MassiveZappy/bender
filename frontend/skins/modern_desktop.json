@@ -1,0 +1,7 @@
+{
+    "id": "modern_desktop",
+    "name": "Modern Desktop Skin",
+    "description": "A modern, responsive skin for desktop viewing",
+    "template_path": "skins/modern_desktop.html",
+    "version": "1.0.0"
+}

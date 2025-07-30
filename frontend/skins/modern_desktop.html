@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - Bender News</title>
+    <style>
+        :root {
+            --primary: #a6c1d6;
+            --primary-dark: #7ca4bd;
+            --primary-light: #c8deec;
+            --secondary: #fffbc7;
+            --text-color: #000d18;
+            --background: #ffffff;
+            --spacing: 1.5rem;
+            --font-main: 'Georgia', serif;
+            --font-secondary: 'Arial', sans-serif;
+            --container-width: 1200px;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--background);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+
+        .desktop-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: var(--spacing) 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .desktop-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .desktop-headline {
+            background-color: var(--primary-light);
+            padding: 2rem 0;
+            border-bottom: 3px solid var(--primary-dark);
+        }
+
+        .desktop-headline h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .desktop-headline h2 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .desktop-content-wrapper {
+            display: flex;
+            margin: 2rem 0;
+        }
+
+        .desktop-main-content {
+            flex: 3;
+            padding-right: 2rem;
+        }
+
+        .desktop-sidebar {
+            flex: 1;
+            background-color: var(--secondary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .desktop-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .desktop-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .desktop-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .desktop-meta {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+        }
+
+        .desktop-meta-item {
+            margin-bottom: 0.75rem;
+            font-family: var(--font-secondary);
+        }
+
+        .desktop-author {
+            font-weight: bold;
+        }
+
+        .desktop-author-description {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .desktop-publication-date {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .desktop-tags {
+            margin-top: 1rem;
+        }
+
+        .desktop-tag {
+            display: inline-block;
+            background-color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-family: var(--font-secondary);
+        }
+
+        .desktop-primary-tag {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .desktop-footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .desktop-footer-text {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .desktop-article-markdown img {
+            max-width: 100%;
+            height: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        .desktop-article-markdown ol,
+        .desktop-article-markdown ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .desktop-article-markdown li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Special styling for blockquotes */
+        .desktop-article-markdown blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Related stories section */
+        .desktop-related {
+            margin-top: 2rem;
+        }
+
+        .desktop-related h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .desktop-related-story {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dotted var(--primary-light);
+        }
+
+        .desktop-related-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="desktop-header">
+        <div class="container">
+            <div class="desktop-logo">BENDER NEWS</div>
+        </div>
+    </header>
+
+    <section class="desktop-headline">
+        <div class="container">
+            <h1>{{title}}</h1>
+            <h2>{{subtitle}}</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="desktop-content-wrapper">
+            <main class="desktop-main-content">
+                <div class="desktop-meta">
+                    <div class="desktop-meta-item desktop-author">By {{author}}</div>
+                    <div class="desktop-meta-item desktop-author-description">{{author_description}}</div>
+                    <div class="desktop-meta-item desktop-publication-date">Published: {{publication_datetime}}</div>
+                    <div class="desktop-meta-item desktop-tags">
+                        <span class="desktop-tag desktop-primary-tag">{{primary_tag}}</span>
+                        {{tags}}
+                    </div>
+                </div>
+
+                <div class="desktop-content desktop-article-markdown">
+                    {{content}}
+                </div>
+            </main>
+
+            <aside class="desktop-sidebar">
+                <div class="desktop-related">
+                    <h3>Related Stories</h3>
+                    <div class="desktop-related-story">
+                        <div class="desktop-related-title">Another Satirical Headline That's Funny</div>
+                    </div>
+                    <div class="desktop-related-story">
+                        <div class="desktop-related-title">Local Man Discovers Humor, Shares It With Friends</div>
+                    </div>
+                    <div class="desktop-related-story">
+                        <div class="desktop-related-title">Scientists Confirm: Laughter Is Indeed The Best Medicine</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="desktop-footer">
+        <div class="container">
+            <div>BENDER NEWS - Satirical Content</div>
+            <div class="desktop-footer-text">The content on this page is satirical and meant for entertainment purposes only.</div>
+        </div>
+    </footer>
+</body>
+</html>

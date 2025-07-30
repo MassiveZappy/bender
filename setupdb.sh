@@ -29,13 +29,22 @@ CREATE TABLE articles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     title TEXT NOT NULL,
+    subtitle TEXT,
     content TEXT NOT NULL,
+    content_html TEXT,
     skin_id INTEGER NOT NULL,
+    publication_datetime DATETIME,
+    author TEXT,
+    author_description TEXT,
+    tags TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (skin_id) REFERENCES skins(id)
 );
 EOF
+
+# make the db accessible to write
+chmod 777 "$DB_PATH"
 
 echo "Database setup complete."
