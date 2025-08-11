@@ -232,11 +232,21 @@ verify_deployment() {
         log_error "Database file not found"
     fi
 
-    # Try to connect to the Flask API
-    if curl -s http://localhost:5000/api/skins > /dev/null; then
-        log_success "Flask API is responding"
+    # Give the Flask API a moment to fully initialize
+    log "Waiting 5 seconds for Flask API to be fully ready..."
+    sleep 5
+
+    # Try to connect to the Flask API with more diagnostics
+    log "Testing Flask API connection..."
+    api_response=$(curl -s -v http://localhost:5000/api/skins 2>&1)
+    api_status=$?
+
+    if [ $api_status -eq 0 ] && echo "$api_response" | grep -q "template_path"; then
+        log_success "Flask API is responding correctly"
     else
-        log_error "Flask API is not responding"
+        log_error "Flask API is not responding properly"
+        log "API response status: $api_status"
+        log "API response: $api_response"
         return 1
     fi
 
@@ -270,3 +280,7 @@ deploy() {
 
 # Run the deployment
 deploy
+
+echo "Deployment completed successfully!"
+echo "Backup location: ${BACKUP_DIR}"
+echo "Log file: ${LOG_FILE}"
