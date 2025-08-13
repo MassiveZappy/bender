@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-=======
-TODO
-=======
->>>>>>> Stashed changes
 # Bender - Satirical News Article Generator
 
 Bender is a web application that allows users to create and share satirical news articles styled after real news outlets. Users can write content that appears in the visual style of popular news websites, making it perfect for parody and satire. This project is intended for entertainment and satirical purposes only.
