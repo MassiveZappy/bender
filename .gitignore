@@ -11,6 +11,7 @@ __pycache__/
 # Backup files and logs
 backups/
 *.log
+deployLogs/
 
 # Scripts to exclude
 hrefFixer.py

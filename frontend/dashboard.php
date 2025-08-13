@@ -24,14 +24,22 @@ include "assets/templates/header.php";
 <script>
 function deleteArticle(id) {
     if (!confirm('Delete this article?')) return;
-    fetch('http://localhost:5000/api/articles/' + id, {
-        method: 'DELETE'
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) location.reload();
-        else alert('Delete failed');
-    });
+
+    // Create form data to submit
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'delete_article.php';
+
+    // Add article ID as form field
+    const idField = document.createElement('input');
+    idField.type = 'hidden';
+    idField.name = 'id';
+    idField.value = id;
+    form.appendChild(idField);
+
+    // Submit the form
+    document.body.appendChild(form);
+    form.submit();
 }
 </script>
 

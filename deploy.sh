@@ -13,7 +13,7 @@ BACKUP_DIR="${SCRIPT_DIR}/backups/${TIMESTAMP}"
 NGINX_CONF="/etc/nginx/sites-available/bender.conf"
 NGINX_LINK="/etc/nginx/sites-enabled/bender.conf"
 SERVICE_NAME="bender-flask"
-LOG_FILE="${SCRIPT_DIR}/deploy_${TIMESTAMP}.log"
+LOG_FILE="${SCRIPT_DIR}/deployLogs/deploy_${TIMESTAMP}.log"
 
 # Colors for output
 GREEN='\033[0;32m'
