@@ -5,6 +5,7 @@ if (!isset($_SESSION["user_id"])) {
     exit();
 }
 $user_id = $_SESSION["user_id"];
+$username = $_SESSION["username"] ?? "User";
 $page_title = "Dashboard - Bender";
 
 // Fetch user's articles from backend
@@ -47,7 +48,10 @@ function deleteArticle(id) {
     <div class="col-lg-10 offset-lg-1">
         <div class="content-card">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
-                <h2 class="mb-0">Your Articles</h2>
+                <div>
+                    <h2 class="mb-0">Welcome, <?= htmlspecialchars($username) ?>!</h2>
+                    <p class="text-muted">Here are your articles</p>
+                </div>
                 <a href="article.php" class="bender-btn">Create New Article</a>
             </div>
 

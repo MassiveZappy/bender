@@ -2,6 +2,7 @@
 session_start();
 $user_id = $_SESSION["user_id"] ?? null;
 $is_admin = $_SESSION["is_admin"] ?? false;
+$username = $_SESSION["username"] ?? "User";
 $page_title = "Bender - Satirical News";
 include "assets/templates/header.php";
 ?>
@@ -14,8 +15,8 @@ include "assets/templates/header.php";
 
             <?php if ($user_id): ?>
                 <div class="mb-4">
-                    <p class="mb-3">Hello, user #<?= htmlspecialchars(
-                        $user_id,
+                    <p class="mb-3">Hello, <?= htmlspecialchars(
+                        $username,
                     ) ?>!</p>
                     <div class="d-flex justify-content-center flex-wrap">
                         <a href="dashboard.php" class="bender-btn">Go to Dashboard</a>

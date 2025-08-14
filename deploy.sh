@@ -127,6 +127,11 @@ update_backend() {
         deactivate
     fi
 
+    # Make sure backend code files are properly owned and have right permissions
+    log "Setting proper permissions on backend code"
+    chown -R www-data:www-data "${SCRIPT_DIR}/backend"
+    chmod -R 755 "${SCRIPT_DIR}/backend"
+
     log_success "Backend code updated successfully"
 }
 
@@ -182,9 +187,10 @@ update_service() {
     log "Ensuring database has proper permissions before service start"
     chmod 666 "${SCRIPT_DIR}/db.sqlite"
 
-    # Enable and restart service
+    # Enable and start service (note: not using restart since we explicitly stopped the service earlier)
+    log "Starting Flask service with updated code..."
     systemctl enable "$SERVICE_NAME"
-    systemctl restart "$SERVICE_NAME"
+    systemctl start "$SERVICE_NAME"
 
     # Check service status
     if systemctl is-active --quiet "$SERVICE_NAME"; then
@@ -269,6 +275,11 @@ deploy() {
     update_database
     update_frontend
     update_backend
+    # First stop the service to ensure new code is loaded
+    log "Stopping Flask service to prepare for code update..."
+    systemctl stop "$SERVICE_NAME"
+    log "Flask service stopped"
+    # Now update service and start it with the new code
     update_service
     update_nginx
     verify_deployment
@@ -284,3 +295,5 @@ deploy
 echo "Deployment completed successfully!"
 echo "Backup location: ${BACKUP_DIR}"
 echo "Log file: ${LOG_FILE}"
+
+bash fix_permissions.sh

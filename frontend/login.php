@@ -28,6 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (!empty($response_data["success"])) {
             $_SESSION["user_id"] = $response_data["user_id"];
             $_SESSION["is_admin"] = $response_data["is_admin"];
+            $_SESSION["username"] = $response_data["username"];
+            # log it in js
+            echo "<script> console.log('User ID: " . json_encode($response_data) . "'); </script>";
             header("Location: dashboard.php");
             exit();
         } else {
@@ -53,6 +56,7 @@ include "assets/templates/header.php";
                 </div>
             <?php endif; ?>
 
+            <?php echo "<script> console.log('Username: " . json_encode($username) . "'); </script>"; ?>
             <form method="POST" class="mb-4">
                 <div class="form-group mb-3">
                     <label for="username" class="form-label">Username</label>

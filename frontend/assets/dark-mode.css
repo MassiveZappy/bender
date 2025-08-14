@@ -1,0 +1,394 @@
+/* Bender - Dark Mode CSS */
+
+/* Dark Mode Variables */
+:root.dark-mode {
+    /* Color overrides for dark mode */
+    --primary: #3498db;
+    --primary-dark: #1d6fa5;
+    --primary-light: #5aacec;
+    --secondary: #e74c3c;
+    --secondary-dark: #c0392b;
+    --accent: #f39c12;
+    --success: #2ecc71;
+    --warning: #f1c40f;
+    --danger: #e74c3c;
+    --light: #2d2d2d;
+    --dark: #e0e0e0;
+    --text-color: #e0e0e0;
+    --gray-100: #333333;
+    --gray-200: #2d2d2d;
+    --gray-300: #262626;
+    --gray-400: #212121;
+    --gray-500: #1a1a1a;
+    --gray-600: #b0b0b0;
+    --gray-700: #cccccc;
+    --gray-800: #dddddd;
+    --gray-900: #eeeeee;
+
+    /* Additional variables for dark mode specific elements */
+    --light-gray: #1a1a1a;
+    --medium-gray: #2d2d2d;
+    --dark-gray: #bbbbbb;
+    --background-color: #121212;
+    --card-color: #1e1e1e;
+    --border-color: #333333;
+
+    /* UI Elements */
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    --box-shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Overrides */
+.dark-mode body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Headers */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+    color: var(--text-color);
+}
+
+.dark-mode h1 {
+    border-bottom-color: var(--primary-color);
+}
+
+.dark-mode h2 {
+    color: #4ca5e6;
+}
+
+/* Links */
+.dark-mode a {
+    color: #5aacec;
+}
+
+.dark-mode a:hover {
+    color: #7bc0f7;
+}
+
+/* Layout Elements */
+.dark-mode header {
+    background-color: var(--card-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode main {
+    background-color: var(--card-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Forms */
+.dark-mode form {
+    background-color: var(--card-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+    background-color: var(--medium-gray);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dark-mode input:focus,
+.dark-mode select:focus,
+.dark-mode textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.5);
+}
+
+/* Lists */
+.dark-mode li {
+    background-color: var(--card-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced article list */
+.dark-mode .article-list li {
+    border-left-color: var(--primary-color);
+}
+
+/* Error messages */
+.dark-mode p[style*="color:red"] {
+    background-color: rgba(231, 76, 60, 0.2);
+}
+
+/* Bender Custom Components */
+.dark-mode .bender-header {
+    background-color: #1a3c4e;
+}
+
+.dark-mode .bender-body {
+    background-color: var(--background-color);
+}
+
+.dark-mode .bender-footer {
+    background-color: #1a3c4e;
+    color: #e0e0e0;
+}
+
+.dark-mode .content-card {
+    background-color: #1e3645;
+}
+
+/* Buttons */
+.dark-mode .bender-btn {
+    background-color: #1a3c4e;
+    color: #e0e0e0;
+}
+
+.dark-mode .bender-btn:hover {
+    background-color: #2a5f7d;
+}
+
+.dark-mode .bender-btn-outline {
+    color: #4ca5e6;
+    border-color: #4ca5e6;
+}
+
+.dark-mode .bender-btn-outline:hover {
+    background-color: #1a3c4e;
+    color: #e0e0e0;
+}
+
+.dark-mode .bender-btn-secondary {
+    background-color: #3d3b15;
+    color: #e0e0e0;
+}
+
+.dark-mode .bender-btn-secondary:hover {
+    background-color: #4d4a1c;
+}
+
+/* Navigation */
+.dark-mode .nav-menu a:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+@media (max-width: 768px) {
+    .dark-mode .nav-menu {
+        background-color: #1a3c4e;
+    }
+}
+
+/* Admin Panel Styles */
+.dark-mode .admin-panel {
+    background-color: var(--card-color);
+    border-color: var(--border-color);
+}
+
+.dark-mode .admin-section {
+    background-color: #1e3645;
+    border-color: var(--border-color);
+}
+
+.dark-mode .admin-table {
+    color: var(--text-color);
+    background-color: var(--card-color);
+}
+
+.dark-mode .admin-table th {
+    background-color: #1a3c4e;
+    color: #e0e0e0;
+}
+
+.dark-mode .admin-table td {
+    border-color: var(--border-color);
+}
+
+.dark-mode .admin-table tr:nth-child(even) {
+    background-color: rgba(26, 60, 78, 0.2);
+}
+
+/* Dashboard Styles */
+.dark-mode .dashboard-section {
+    background-color: var(--card-color);
+    border-color: var(--border-color);
+}
+
+.dark-mode .dashboard-heading {
+    color: #4ca5e6;
+    border-bottom-color: #1a3c4e;
+}
+
+/* Dark Mode Toggle Switch */
+.dark-mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+}
+
+.dark-mode-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+    background-color: #ccc;
+    border-radius: 22px;
+    margin-right: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider:before {
+    position: absolute;
+    font-family: "Font Awesome 6 Free";
+    content: "\f185";
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    color: #f39c12;
+}
+
+input:checked + .toggle-slider {
+    background-color: #3498db;
+}
+
+input:checked + .toggle-slider:before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f186";
+    transform: translateX(22px);
+    background-color: #222;
+    color: #f1c40f;
+    font-size: 12px;
+}
+
+/* Toggle text styling */
+.toggle-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.dark-mode .toggle-text {
+    color: #e0e0e0;
+}
+
+/* Welcome message */
+.dark-mode #welcome-message {
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+/* Hero section */
+.dark-mode .hero::before {
+    background: linear-gradient(
+        135deg,
+        rgba(52, 152, 219, 0.2) 0%,
+        rgba(243, 156, 18, 0.2) 100%
+    );
+}
+
+/* Code editor-related elements if any */
+.dark-mode pre,
+.dark-mode code {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+    color: #e0e0e0;
+}
+
+/* Mobile-specific dark mode adjustments */
+@media (max-width: 768px) {
+    .dark-mode .mobile-menu-toggle {
+        color: var(--text-color);
+    }
+
+    .dark-mode .nav-menu {
+        background-color: var(--card-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .dark-mode .dark-mode-toggle {
+        margin-right: 55px;
+    }
+}
+
+/* User Interface Components */
+.dark-mode .content-card {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .bender-btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Article Specific Styles */
+.dark-mode .article-editor {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.dark-mode .editor-toolbar {
+    background-color: #1e3645;
+    border-color: var(--border-color);
+}
+
+.dark-mode .editor-button {
+    background-color: #1a3c4e;
+    color: #e0e0e0;
+}
+
+.dark-mode .editor-button:hover {
+    background-color: #2a5f7d;
+}
+
+/* Article Skin Preview in Dark Mode */
+.dark-mode .skin-preview {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Elements Refinements */
+.dark-mode select option {
+    background-color: var(--medium-gray);
+    color: var(--text-color);
+}
+
+.dark-mode input[type="checkbox"],
+.dark-mode input[type="radio"] {
+    accent-color: var(--primary);
+}
+
+/* Dark mode toggle transitions */
+.dark-mode-toggle {
+    margin-right: 15px;
+}
+
+.toggle-slider,
+input:checked + .toggle-slider:before {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ensure icon is centered properly */
+.toggle-slider:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

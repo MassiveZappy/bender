@@ -20,7 +20,9 @@ if (isset($_SERVER["HTTP_USER_AGENT"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($page_title) ?></title>
     <link rel="stylesheet" href="assets/modern.css">
-    <!-- You could add a third-party icon library like FontAwesome if needed -->
+    <link rel="stylesheet" href="assets/dark-mode.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         /* Sticky footer solution */
         html, body {
@@ -53,6 +55,20 @@ if (isset($_SERVER["HTTP_USER_AGENT"])) {
             color: #000d18;
             padding: 1.5rem 0;
             flex-shrink: 0; /* Prevent footer from shrinking */
+        }
+
+        /* Dark mode toggle styles */
+        .dark-mode-toggle {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .toggle-text {
+            margin-left: 5px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         /* Card with hover effect */
@@ -180,6 +196,7 @@ if (isset($_SERVER["HTTP_USER_AGENT"])) {
             }
         });
     </script>
+    <script src="assets/dark-mode.js?v=<?= time() ?>"></script>
 </head>
 <body>
     <!-- Header -->
@@ -189,7 +206,12 @@ if (isset($_SERVER["HTTP_USER_AGENT"])) {
                 <div class="col-md-4">
                     <a href="index.php" class="logo">BENDER</a>
                 </div>
-                <div class="col-md-8 d-flex justify-content-end">
+                <div class="col-md-8 d-flex justify-content-end align-items-center">
+                    <label class="dark-mode-toggle" title="Toggle Dark Mode">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-text">Dark</span>
+                    </label>
                     <button class="mobile-menu-toggle">≡</button>
                     <nav class="nav-menu">
                         <?php if ($user_id): ?>

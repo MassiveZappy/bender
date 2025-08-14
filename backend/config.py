@@ -1,5 +1,6 @@
 import os
 import json
+import datetime
 
 class Config:
     """Base configuration class for Bender application."""
@@ -9,6 +10,8 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-key-change-in-production')
     CORS_ENABLED = True
     CORS_ORIGINS = ['https://bender.chat', 'https://www.bender.chat']
+    API_VERSION = '1.0.0'
+    BUILD_DATE = datetime.datetime.now().strftime('%Y-%m-%d')
 
     @staticmethod
     def init_app(app):

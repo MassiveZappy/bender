@@ -26,6 +26,15 @@ curl_close($ch);
 // Filter admins
 $admins = array_filter($users, fn($u) => $u["is_admin"]);
 
+// Fetch API version information
+$ch = curl_init("http://localhost:5000/api/admin/version");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Set timeout to 10 seconds
+$response = curl_exec($ch);
+$version_info = !empty($response) ? json_decode($response, true) : [];
+$version_error = curl_error($ch);
+curl_close($ch);
+
 // Check if we're viewing articles for a specific user
 $view_user_articles = $_GET["view_user_articles"] ?? null;
 $user_articles = [];
@@ -387,6 +396,47 @@ include "assets/templates/header.php";
             <div class="content-card">
                 <h2 class="mb-4">Admin Panel</h2>
                 <p class="mb-4">Welcome to the administration panel. Here you can manage users and articles.</p>
+
+                <!-- API Version Information -->
+                <div class="admin-card">
+                    <h3>API Version Information</h3>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <tbody>
+                                <?php if (!empty($version_error)): ?>
+                                    <tr>
+                                        <td colspan="2" class="text-center">Error fetching version info: <?= htmlspecialchars($version_error) ?></td>
+                                    </tr>
+                                <?php elseif (empty($version_info)): ?>
+                                    <tr>
+                                        <td colspan="2" class="text-center">Version information not available</td>
+                                    </tr>
+                                <?php else: ?>
+                                    <tr>
+                                        <th>API Version</th>
+                                        <td><?= htmlspecialchars($version_info["version"]) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Build Date</th>
+                                        <td><?= htmlspecialchars($version_info["build_date"]) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Environment</th>
+                                        <td><?= htmlspecialchars($version_info["environment"]) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Python Version</th>
+                                        <td><?= htmlspecialchars($version_info["python_version"]) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Flask Version</th>
+                                        <td><?= htmlspecialchars($version_info["flask_version"]) ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <?php if (!empty($users_error)): ?>
                     <div class="alert alert-danger">Error fetching users: <?= htmlspecialchars(

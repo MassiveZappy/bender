@@ -2,6 +2,7 @@ import sqlite3
 import os
 import sys
 import traceback
+import flask
 from flask import Flask, request, jsonify, g
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
@@ -74,7 +75,7 @@ def login():
         "SELECT * FROM users WHERE username = ?", (username,)
     ).fetchone()
     if user and check_password_hash(user['password_hash'], password):
-        return jsonify({'success': True, 'user_id': user['id'], 'is_admin': user['is_admin']})
+        return jsonify({'success': True, 'user_id': user['id'], 'is_admin': user['is_admin'], 'username': user['username']})
     return jsonify({'error': 'Invalid credentials'}), 401
 
 # --- Skins ---
@@ -319,6 +320,19 @@ def get_admins():
     db = get_db()
     admins = db.execute("SELECT id, username FROM users WHERE is_admin = 1").fetchall()
     return jsonify([dict(row) for row in admins])
+
+# --- Version Info ---
+@app.route('/api/admin/version', methods=['GET'])
+def get_version():
+    """Return API version information for admin users"""
+    version_info = {
+        'version': app.config['API_VERSION'],
+        'build_date': app.config['BUILD_DATE'],
+        'environment': os.environ.get('FLASK_CONFIG', 'default'),
+        'python_version': sys.version,
+        'flask_version': flask.__version__
+    }
+    return jsonify(version_info)
 
 # Add CORS headers to all responses
 @app.after_request
